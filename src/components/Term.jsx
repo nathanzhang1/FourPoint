@@ -3,7 +3,7 @@ import CourseList from './CourseList';
 import CourseInput from './CourseInput';
 import styles from '../styles/Term.module.css';
 
-function Term() {
+function Term({ term }) {
     const [courses, setCourses] = useState([]);
 
     const handleAddCourse = (courseName) => {
@@ -13,6 +13,7 @@ function Term() {
 
     return (
         <div className={styles.term}>
+            <h3 className={styles.termHeader}>{term}</h3>
             <CourseInput onAddCourse={handleAddCourse} />
             <CourseList courses={courses} setCourses={setCourses}/>
         </div>

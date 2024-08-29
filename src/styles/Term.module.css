@@ -1,3 +1,7 @@
 .term {
     border: 2px black solid;
 }
+
+.termHeader {
+    padding-left: 20px;
+}
