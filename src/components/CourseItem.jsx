@@ -1,12 +1,10 @@
 import React from 'react';
-import { useDegreePlan } from '../context/DegreePlanContext';
 
-function CourseItem({ course }) {
-  const { updateCourse } = useDegreePlan();
+function CourseItem({ course, courses, setCourses }) {
 
   const handleGradeChange = (e) => {
     const updatedCourse = { ...course, grade: e.target.value };
-    updateCourse(updatedCourse);
+    setCourses(courses.map(course => course.id === updatedCourse.id ? updatedCourse : course));
   };
 
   return (

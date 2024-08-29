@@ -1,14 +1,12 @@
 import React from 'react';
-import { useDegreePlan } from '../context/DegreePlanContext';
 import CourseItem from './CourseItem';
 
-function CourseList() {
-  const { courses } = useDegreePlan();
+function CourseList({ courses, setCourses }) {
 
   return (
     <ul>
       {courses.map(course => (
-        <CourseItem key={course.id} course={course} />
+        <CourseItem key={course.id} course={course} courses={courses} setCourses={setCourses} />
       ))}
     </ul>
   );
