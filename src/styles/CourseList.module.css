@@ -1,0 +1,5 @@
+.courseList {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    align-items: center;
+}

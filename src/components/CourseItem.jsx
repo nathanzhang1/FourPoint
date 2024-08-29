@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from "../styles/CourseItem.module.css"
 
 function CourseItem({ course, courses, setCourses }) {
 
@@ -8,13 +9,13 @@ function CourseItem({ course, courses, setCourses }) {
   };
 
   return (
-    <li>
+    <li className={styles.courseItem}>
       {course.name} - Grade: 
       <input 
         type="text" 
         value={course.grade} 
         onChange={handleGradeChange} 
-        placeholder="Enter grade"
+        className={styles.gradeInput}
       />
     </li>
   );
