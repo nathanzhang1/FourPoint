@@ -1,11 +1,12 @@
 import React from 'react';
-import CourseItem from './CourseItem';
+import { CourseItem, EmptySlot } from './CourseItem';
 import styles from "../styles/CourseList.module.css"
 
 function CourseList({ courses, setCourses }) {
     const emptySlots = [];
     for (let i = 0; i < (6 - courses.length); i++) {
-        emptySlots.push(<div></div>);
+        let key = Math.random();
+        emptySlots.push(<EmptySlot key={key}/>);
     }
 
     let courseList = courses.map(course => (
@@ -18,10 +19,10 @@ function CourseList({ courses, setCourses }) {
     courseList.reverse();
 
     return (
-        <ul className={styles.courseList}>
+        <div className={styles.courseList}>
             {emptySlots}
             {courseList}
-        </ul>
+        </div>
     );
 }
 
