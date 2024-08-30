@@ -1,0 +1,4 @@
+.formRow label, .formRow button {
+    display: block;
+    width: 100%;
+}

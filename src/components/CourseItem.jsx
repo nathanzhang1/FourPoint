@@ -1,9 +1,23 @@
-import React from 'react';
-import styles from "../styles/CourseItem.module.css"
+import React, { useState } from 'react';
+import CourseModal from "./CourseModal";
+import styles from "../styles/CourseItem.module.css";
 
 export function EmptySlot() {
+    const [isCourseModalOpen, setCourseModalOpen] = useState(false);
+
+    const handleOpenCourseModal = () => {
+        setCourseModalOpen(true);
+    }
+
+    const handleCloseCourseModal = () => {
+        setCourseModalOpen(false);
+    }
+
     return (
-        <div className={styles.emptySlot}></div>
+        <>
+            <button className={styles.emptySlot} onClick={handleOpenCourseModal}></button>
+            <CourseModal isOpen={isCourseModalOpen} onClose={handleCloseCourseModal}></CourseModal>
+        </>
     )
 }
 
