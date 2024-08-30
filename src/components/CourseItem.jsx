@@ -26,3 +26,12 @@ export function CourseItem({ course, courses, setCourses }) {
     </div>
   );
 }
+
+export function Totals() {
+    return (
+        <div className={styles.totals}>
+            <div>Total units:</div>
+            <div>Term GPA:</div>
+        </div>
+    )
+}

@@ -1,8 +1,7 @@
 .courseItem {
     padding-left: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    /* height: 40px; */
+    padding-top: 11px;
+    padding-bottom: 11px;
 }
 
 .gradeInput {
@@ -10,10 +9,9 @@
 }
 
 .emptySlot {
-    /* height: 40px; */
     padding-left: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 11px;
+    padding-bottom: 11px;
 }
 
 .courseItem:hover {
@@ -27,4 +25,12 @@
 .emptySlot:hover::before {
     content: "Add course:";
     color: gray;
+}
+
+.totals {
+    padding-left: 20px;
+    height: 30px;
+    font-size: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
