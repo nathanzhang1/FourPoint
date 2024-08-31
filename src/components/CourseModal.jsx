@@ -42,53 +42,50 @@ function CourseModal({ isOpen, onClose, onAddCourse }) {
 
       return (
         <Modal hasCloseBtn={true} isOpen={isOpen} onClose={onClose}>
-            <h4>Add a course</h4>
+            <h3>Add a course</h3>
           <form onSubmit={handleSubmit}>
             <div className={styles.formRow}>
-              <label htmlFor="courseName">Course Name</label>
-              <input
-                ref={focusInputRef}
-                type="text"
-                id="courseName"
-                name="courseName"
-                value={formState.courseName}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className={styles.formRow}>
-                <label htmlFor="professor">Professor</label>
                 <input
+                    ref={focusInputRef}
                     type="text"
-                    id="professor"
-                    name="professor"
-                    value={formState.professor}
+                    id="courseName"
+                    name="courseName"
+                    placeholder="Course name"
+                    value={formState.courseName}
                     onChange={handleInputChange}
+                    required
                 />
-            </div>
-            <div className={styles.formRow}>
-                <label htmlFor="units">Units</label>
                 <input
                     type="number"
                     id="units"
                     name="units"
+                    placeholder="Units"
                     value={formState.units}
                     onChange={handleInputChange}
                     required
                 />
             </div>
             <div className={styles.formRow}>
-                <label htmlFor="grade">Grade</label>
+                <input
+                    type="text"
+                    id="professor"
+                    name="professor"
+                    placeholder="Professor"
+                    value={formState.professor}
+                    onChange={handleInputChange}
+                />
                 <input
                     type="text"
                     id="grade"
                     name="grade"
+                    placeholder="Grade"
                     value={formState.grade}
                     onChange={handleInputChange}
                 />
             </div>
-            <div className={styles.formRow}>
-              <button type="submit">Submit</button>
+            <div className={styles.formButtons}>
+                <button type="button" onClick={onClose}>Cancel</button>
+                <button type="submit">Save changes</button>
             </div>
           </form>
         </Modal>

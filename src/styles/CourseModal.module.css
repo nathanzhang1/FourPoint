@@ -1,4 +1,43 @@
-.formRow label, .formRow button {
+.formRow {
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    gap: 3rem;
+}
+
+.formRow input {
     display: block;
     width: 100%;
+    height: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.formRow input::placeholder {
+    font-size: 14px;
+}
+
+.formButtons {
+    display: flex;
+    justify-content: right;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.formButtons button[type="submit"] {
+    background-color: #316fd3;
+    color: white;
+    border: none;
+    height: 2.2rem;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.formButtons button[type="button"] {
+    background-color: rgb(95, 94, 94);
+    color: white;
+    border: none;
+    height: 2.2rem;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 10px;
 }

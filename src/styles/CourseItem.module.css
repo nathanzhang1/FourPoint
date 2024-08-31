@@ -20,11 +20,11 @@
 }
 
 .courseItem:hover {
-    background-color: aliceblue;
+    background-color: #f0f0f0;
 }
 
 .emptySlot:hover {
-    background-color: aliceblue;
+    background-color: #f5f5f5;
 }
 
 .emptySlot:hover::before {

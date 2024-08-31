@@ -38,7 +38,7 @@ const Modal = ({ isOpen, hasCloseBtn = true, onClose, children }) => {
     <dialog ref={modalRef} onKeyDown={handleKeyDown} className={styles.modal}>
       {hasCloseBtn && (
         <button className={styles.modalCloseBtn} onClick={handleCloseModal}>
-          Close
+          &times;
         </button>
       )}
       {children}
