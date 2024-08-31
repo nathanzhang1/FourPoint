@@ -30,13 +30,15 @@ export function CourseItem({ course, courses, setCourses }) {
 
   return (
     <div className={styles.courseItem}>
-      {course.name.toUpperCase()} - Grade: 
-      <input 
-        type="text" 
-        value={course.grade.toUpperCase()} 
-        onChange={handleGradeChange} 
-        className={styles.gradeInput}
-      />
+        <div>
+            {course.name.toUpperCase()} - Grade: 
+            <input 
+                type="text" 
+                value={course.grade.toUpperCase()} 
+                onChange={handleGradeChange} 
+                className={styles.gradeInput}
+            />
+        </div>
     </div>
   );
 }

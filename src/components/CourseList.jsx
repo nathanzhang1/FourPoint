@@ -4,7 +4,7 @@ import styles from "../styles/CourseList.module.css"
 
 function CourseList({ courses, setCourses, onAddCourse }) {
     const emptySlots = [];
-    for (let i = 0; i < (5 - courses.length); i++) {
+    for (let i = 0; i < (6 - courses.length); i++) {
         let key = Math.random();
         emptySlots.push(<EmptySlot key={key} onAddCourse={onAddCourse}/>);
     }
