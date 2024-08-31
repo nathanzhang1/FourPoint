@@ -15,7 +15,7 @@ function Term({ term }) {
         <div className={styles.term}>
             <h3 className={styles.termHeader}>{term}</h3>
             <CourseInput onAddCourse={handleAddCourse} />
-            <CourseList courses={courses} setCourses={setCourses} />
+            <CourseList courses={courses} setCourses={setCourses} onAddCourse={handleAddCourse} />
         </div>
     )
 }

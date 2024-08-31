@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CourseModal from "./CourseModal";
 import styles from "../styles/CourseItem.module.css";
 
-export function EmptySlot() {
+export function EmptySlot({onAddCourse}) {
     const [isCourseModalOpen, setCourseModalOpen] = useState(false);
 
     const handleOpenCourseModal = () => {
@@ -16,7 +16,7 @@ export function EmptySlot() {
     return (
         <>
             <button className={styles.emptySlot} onClick={handleOpenCourseModal}></button>
-            <CourseModal isOpen={isCourseModalOpen} onClose={handleCloseCourseModal}></CourseModal>
+            <CourseModal isOpen={isCourseModalOpen} onClose={handleCloseCourseModal} onAddCourse={onAddCourse}></CourseModal>
         </>
     )
 }

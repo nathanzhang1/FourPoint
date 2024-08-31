@@ -2,11 +2,11 @@ import React from 'react';
 import { CourseItem, EmptySlot, Totals } from './CourseItem';
 import styles from "../styles/CourseList.module.css"
 
-function CourseList({ courses, setCourses }) {
+function CourseList({ courses, setCourses, onAddCourse }) {
     const emptySlots = [];
     for (let i = 0; i < (5 - courses.length); i++) {
         let key = Math.random();
-        emptySlots.push(<EmptySlot key={key}/>);
+        emptySlots.push(<EmptySlot key={key} onAddCourse={onAddCourse}/>);
     }
 
     let courseList = courses.map(course => (

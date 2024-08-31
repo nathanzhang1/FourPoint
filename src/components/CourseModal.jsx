@@ -2,6 +2,31 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "../styles/CourseModal.module.css";
 import Modal from "./Modal";
 
+// function CourseInput({ onAddCourse }) {
+//     const [courseName, setCourseName] = useState('');
+  
+//     const handleSubmit = (e) => {
+//       e.preventDefault();
+//       if (courseName) {
+//         onAddCourse(courseName);
+//         setCourseName('');
+//       }
+//     };
+  
+//     return (
+//       <form onSubmit={handleSubmit}>
+//         <input
+//           type="text"
+//           value={courseName}
+//           onChange={(e) => setCourseName(e.target.value)}
+//           placeholder="Enter course name"
+//           className={styles.courseInput}
+//         />
+//         <button type="submit" className={styles.inputButton}>Add Course</button>
+//       </form>
+//     );
+//   }
+
 const initialCourseModalData = {
     courseName: '',
     professor: '',
@@ -9,7 +34,7 @@ const initialCourseModalData = {
     grade: '',
   };
 
-function CourseModal({ isOpen, onClose}) {
+function CourseModal({ isOpen, onClose, onAddCourse }) {
     const focusInputRef = useRef(null);
     const [formState, setFormState] = useState(initialCourseModalData);
 
@@ -29,9 +54,21 @@ function CourseModal({ isOpen, onClose}) {
         }));
       };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (formState.courseName) {
+            onAddCourse(formState.courseName);
+            setFormState((prevFormData) => ({
+                ...prevFormData,
+                courseName: '',
+              }));
+        }
+    };
+
       return (
         <Modal hasCloseBtn={true} isOpen={isOpen} onClose={onClose}>
-          <form>
+            <h4>Add a course</h4>
+          <form onSubmit={handleSubmit}>
             <div className={styles.formRow}>
               <label htmlFor="courseName">Course Name</label>
               <input
