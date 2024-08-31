@@ -9,7 +9,7 @@ const initialCourseModalData = {
     grade: '',
   };
 
-function CourseModal({ isOpen, onClose, onAddCourse }) {
+export function CourseModal({ isOpen, onClose, onAddCourse}) {
     const focusInputRef = useRef(null);
     const [formState, setFormState] = useState(initialCourseModalData);
 
@@ -92,4 +92,86 @@ function CourseModal({ isOpen, onClose, onAddCourse }) {
       )
 }
 
-export default CourseModal;
+export function UpdateCourseModal({ isOpen, onClose, onUpdateCourse, course}) {
+    const focusInputRef = useRef(null);
+    const [formState, setFormState] = useState(course);
+
+    useEffect(() => {
+        if (isOpen && focusInputRef.current) {
+          setTimeout(() => {
+            focusInputRef.current.focus();
+          }, 0);
+        }
+      }, [isOpen]);
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        console.log(event.target);
+        setFormState((prevFormData) => ({
+          ...prevFormData,
+          [name]: value,
+        }));
+      };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (formState.name && formState.units) {
+            onUpdateCourse(formState);
+            setFormState(formState);
+            onClose();
+        }
+    };
+
+      return (
+        <Modal hasCloseBtn={true} isOpen={isOpen} onClose={onClose}>
+            <h3>Update a course</h3>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.formRow}>
+                <input
+                    ref={focusInputRef}
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Course name"
+                    value={formState.name}
+                    onChange={handleInputChange}
+                    required
+                />
+                <input
+                    type="number"
+                    id="units"
+                    name="units"
+                    placeholder="Units"
+                    value={formState.units}
+                    onChange={handleInputChange}
+                    required
+                />
+            </div>
+            <div className={styles.formRow}>
+                <input
+                    type="text"
+                    id="professor"
+                    name="professor"
+                    placeholder="Professor"
+                    value={formState.professor}
+                    onChange={handleInputChange}
+                />
+                <input
+                    type="text"
+                    id="grade"
+                    name="grade"
+                    placeholder="Grade"
+                    value={formState.grade}
+                    onChange={handleInputChange}
+                />
+            </div>
+            <div className={styles.formButtons}>
+                <button type="button" onClick={onClose}>Cancel</button>
+                <button type="submit">Save changes</button>
+            </div>
+          </form>
+        </Modal>
+      )
+}
+
+

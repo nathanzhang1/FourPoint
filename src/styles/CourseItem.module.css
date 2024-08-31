@@ -1,9 +1,16 @@
 .courseItem {
-    padding-left: 20px;
     height: 40px;
     display: grid;
     align-items: center;
+    justify-items: left;
     grid-template-columns: 2fr 1fr 1fr;
+    background-color: white;
+    border: 0;
+}
+
+.courseItem > div {
+    font-size: 16px;
+    padding-left: 15px;
 }
 
 .gradeInput {
@@ -20,15 +27,16 @@
 }
 
 .courseItem:hover {
-    background-color: #f0f0f0;
+    background-color: #f1f5f9;
 }
 
 .emptySlot:hover {
-    background-color: #f5f5f5;
+    background-color: #f1f5f9;
 }
 
 .emptySlot:hover::before {
-    content: "Add course:";
+    content: "+";
+    font-size: 18px;
     color: gray;
 }
 

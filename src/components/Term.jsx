@@ -10,10 +10,16 @@ function Term({ term }) {
       setCourses([...courses, newCourse]);
     };
 
+    const handleUpdateCourse = (updatedCourse) => {
+        setCourses(courses.map(course => 
+          course.id === updatedCourse.id ? { ...course, ...updatedCourse } : course
+        ));
+    };
+
     return (
         <div className={styles.term}>
             <h3 className={styles.termHeader}>{term}</h3>
-            <CourseList courses={courses} setCourses={setCourses} onAddCourse={handleAddCourse} />
+            <CourseList courses={courses} onAddCourse={handleAddCourse} onUpdateCourse={handleUpdateCourse}/>
         </div>
     )
 }

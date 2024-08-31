@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CourseModal from "./CourseModal";
+import { UpdateCourseModal, CourseModal } from "./CourseModal";
 import styles from "../styles/CourseItem.module.css";
 
 export function EmptySlot({onAddCourse}) {
@@ -19,28 +19,38 @@ export function EmptySlot({onAddCourse}) {
             <CourseModal 
                 isOpen={isCourseModalOpen} 
                 onClose={handleCloseCourseModal} 
-                onAddCourse={onAddCourse}></CourseModal>
+                onAddCourse={onAddCourse}>
+            </CourseModal>
         </>
     )
 }
 
-export function CourseItem({ 
-    course, 
-    courses, 
-    setCourses }) {
+export function CourseItem({ course, onUpdateCourse }) {
+    const [isCourseModalOpen, setCourseModalOpen] = useState(false);
 
-  const handleGradeChange = (e) => {
-    const updatedCourse = { ...course, grade: e.target.value };
-    setCourses(courses.map(course => course.id === updatedCourse.id ? updatedCourse : course));
-  };
+    const handleOpenCourseModal = () => {
+        setCourseModalOpen(true);
+    }
 
-  return (
-    <div className={styles.courseItem}>
-        <div>{course.name.toUpperCase()}</div>
-        <div>{course.grade.toUpperCase()}</div>
-        <div>{course.units}</div>
-    </div>
-  );
+    const handleCloseCourseModal = () => {
+        setCourseModalOpen(false);
+    }
+
+    return (
+        <>
+            <button className={styles.courseItem} onClick={handleOpenCourseModal}>
+                <div>{course.name.toUpperCase()}</div>
+                <div>{course.grade.toUpperCase()}</div>
+                <div>{course.units}</div>
+            </button>
+            <UpdateCourseModal
+                isOpen={isCourseModalOpen} 
+                onClose={handleCloseCourseModal} 
+                onUpdateCourse={onUpdateCourse}
+                course={course}>
+            </UpdateCourseModal>
+        </>
+    );
 }
 
 export function Totals() {
