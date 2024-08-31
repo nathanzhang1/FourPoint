@@ -31,8 +31,8 @@ function CourseModal({ isOpen, onClose, onAddCourse }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (formState.courseName) {
-            onAddCourse(formState.courseName);
+        if (formState.courseName && formState.units) {
+            onAddCourse(formState.courseName, formState.professor, formState.grade, formState.units);
             setFormState((prevFormData) => ({
                 ...prevFormData,
                 courseName: '',
@@ -64,7 +64,6 @@ function CourseModal({ isOpen, onClose, onAddCourse }) {
                     name="professor"
                     value={formState.professor}
                     onChange={handleInputChange}
-                    required
                 />
             </div>
             <div className={styles.formRow}>
@@ -86,7 +85,6 @@ function CourseModal({ isOpen, onClose, onAddCourse }) {
                     name="grade"
                     value={formState.grade}
                     onChange={handleInputChange}
-                    required
                 />
             </div>
             <div className={styles.formRow}>

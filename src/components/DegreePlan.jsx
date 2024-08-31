@@ -10,7 +10,7 @@ function DegreePlan() {
       <h2 className={styles.planHeader}>Degree Plan A</h2>
       <div className={styles.planContainer}>
         {terms.map(terms => (
-            <Term term={terms} />
+            <Term key={Math.random()} term={terms} />
         ))}
       </div>
     </div>

@@ -5,8 +5,8 @@ import styles from '../styles/Term.module.css';
 function Term({ term }) {
     const [courses, setCourses] = useState([]);
 
-    const handleAddCourse = (courseName) => {
-      const newCourse = { id: Date.now(), name: courseName, grade: '' };
+    const handleAddCourse = (courseName, professor, grade, units) => {
+      const newCourse = { id: Date.now(), name: courseName, professor: professor, grade: grade, units: units };
       setCourses([...courses, newCourse]);
     };
 

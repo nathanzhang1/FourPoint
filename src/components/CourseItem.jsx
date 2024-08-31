@@ -16,12 +16,18 @@ export function EmptySlot({onAddCourse}) {
     return (
         <>
             <button className={styles.emptySlot} onClick={handleOpenCourseModal}></button>
-            <CourseModal isOpen={isCourseModalOpen} onClose={handleCloseCourseModal} onAddCourse={onAddCourse}></CourseModal>
+            <CourseModal 
+                isOpen={isCourseModalOpen} 
+                onClose={handleCloseCourseModal} 
+                onAddCourse={onAddCourse}></CourseModal>
         </>
     )
 }
 
-export function CourseItem({ course, courses, setCourses }) {
+export function CourseItem({ 
+    course, 
+    courses, 
+    setCourses }) {
 
   const handleGradeChange = (e) => {
     const updatedCourse = { ...course, grade: e.target.value };
@@ -30,15 +36,9 @@ export function CourseItem({ course, courses, setCourses }) {
 
   return (
     <div className={styles.courseItem}>
-        <div>
-            {course.name.toUpperCase()} - Grade: 
-            <input 
-                type="text" 
-                value={course.grade.toUpperCase()} 
-                onChange={handleGradeChange} 
-                className={styles.gradeInput}
-            />
-        </div>
+        <div>{course.name.toUpperCase()}</div>
+        <div>{course.grade.toUpperCase()}</div>
+        <div>{course.units}</div>
     </div>
   );
 }
