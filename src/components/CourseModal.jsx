@@ -84,7 +84,7 @@ export function CourseModal({ isOpen, onClose, onAddCourse}) {
                 />
             </div>
             <div className={styles.formButtons}>
-                <button type="button" onClick={onClose}>Cancel</button>
+                <button type="button" onClick={onClose} className={styles.cancelButton}>Cancel</button>
                 <button type="submit">Save changes</button>
             </div>
           </form>
@@ -92,7 +92,7 @@ export function CourseModal({ isOpen, onClose, onAddCourse}) {
       )
 }
 
-export function UpdateCourseModal({ isOpen, onClose, onUpdateCourse, course}) {
+export function UpdateCourseModal({ isOpen, onClose, onUpdateCourse, onDeleteCourse, course}) {
     const focusInputRef = useRef(null);
     const [formState, setFormState] = useState(course);
 
@@ -106,12 +106,17 @@ export function UpdateCourseModal({ isOpen, onClose, onUpdateCourse, course}) {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        console.log(event.target);
         setFormState((prevFormData) => ({
           ...prevFormData,
           [name]: value,
         }));
       };
+
+    const handleDeleteCourse = () => {
+        onDeleteCourse(course.id);
+        setFormState(initialCourseModalData);
+        onClose();
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -166,7 +171,8 @@ export function UpdateCourseModal({ isOpen, onClose, onUpdateCourse, course}) {
                 />
             </div>
             <div className={styles.formButtons}>
-                <button type="button" onClick={onClose}>Cancel</button>
+                <button type="button" onClick={handleDeleteCourse} className={styles.deleteButton}>Delete course</button>
+                <button type="button" onClick={onClose} className={styles.cancelButton}>Cancel</button>
                 <button type="submit">Save changes</button>
             </div>
           </form>

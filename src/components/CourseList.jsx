@@ -2,7 +2,7 @@ import React from 'react';
 import { CourseItem, EmptySlot, Totals } from './CourseItem';
 import styles from "../styles/CourseList.module.css"
 
-function CourseList({ courses, onAddCourse, onUpdateCourse }) {
+function CourseList({ courses, onAddCourse, onUpdateCourse, onDeleteCourse }) {
     const emptySlots = [];
     for (let i = 0; i < (6 - courses.length); i++) {
         let key = Math.random();
@@ -14,7 +14,8 @@ function CourseList({ courses, onAddCourse, onUpdateCourse }) {
             key={course.id} 
             course={course} 
             onAddCourse={onAddCourse}
-            onUpdateCourse={onUpdateCourse} />
+            onUpdateCourse={onUpdateCourse}
+            onDeleteCourse={onDeleteCourse} />
     ));
     courseList.reverse();
 

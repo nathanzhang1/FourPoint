@@ -34,6 +34,10 @@
     background-color: #f1f5f9;
 }
 
+.courseItem:focus, .emptySlot:focus {
+    outline: none;
+}
+
 .emptySlot:hover::before {
     content: "+";
     font-size: 18px;

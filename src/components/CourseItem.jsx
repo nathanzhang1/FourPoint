@@ -25,7 +25,7 @@ export function EmptySlot({onAddCourse}) {
     )
 }
 
-export function CourseItem({ course, onUpdateCourse }) {
+export function CourseItem({ course, onUpdateCourse, onDeleteCourse }) {
     const [isCourseModalOpen, setCourseModalOpen] = useState(false);
 
     const handleOpenCourseModal = () => {
@@ -47,6 +47,7 @@ export function CourseItem({ course, onUpdateCourse }) {
                 isOpen={isCourseModalOpen} 
                 onClose={handleCloseCourseModal} 
                 onUpdateCourse={onUpdateCourse}
+                onDeleteCourse={onDeleteCourse}
                 course={course}>
             </UpdateCourseModal>
         </>

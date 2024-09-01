@@ -6,7 +6,12 @@ function Term({ term }) {
     const [courses, setCourses] = useState([]);
 
     const handleAddCourse = (courseName, professor, grade, units) => {
-      const newCourse = { id: Date.now(), name: courseName, professor: professor, grade: grade, units: units };
+      const newCourse = { 
+        id: Date.now(), 
+        name: courseName, 
+        professor: professor, 
+        grade: grade, 
+        units: units };
       setCourses([...courses, newCourse]);
     };
 
@@ -16,10 +21,18 @@ function Term({ term }) {
         ));
     };
 
+    const handleDeleteCourse = (id) => {
+        setCourses(courses.filter(course => course.id !== id));
+      };
+
     return (
         <div className={styles.term}>
             <h3 className={styles.termHeader}>{term}</h3>
-            <CourseList courses={courses} onAddCourse={handleAddCourse} onUpdateCourse={handleUpdateCourse}/>
+            <CourseList 
+                courses={courses} 
+                onAddCourse={handleAddCourse} 
+                onUpdateCourse={handleUpdateCourse} 
+                onDeleteCourse={handleDeleteCourse}/>
         </div>
     )
 }

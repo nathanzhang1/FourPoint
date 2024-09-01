@@ -32,8 +32,18 @@
     padding: 10px;
 }
 
-.formButtons button[type="button"] {
+.cancelButton {
     background-color: rgb(95, 94, 94);
+    color: white;
+    border: none;
+    height: 2.2rem;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.deleteButton {
+    background-color: red;
     color: white;
     border: none;
     height: 2.2rem;
