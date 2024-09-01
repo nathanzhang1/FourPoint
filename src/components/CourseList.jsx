@@ -6,7 +6,7 @@ export function Totals({ totalUnits, gpa }) {
 
     return (
         <div className={styles.totals}>
-            <div>Total units: {totalUnits}</div>
+            <div>Term units: {totalUnits}</div>
             <div>Term GPA: {gpa}</div>
         </div>
     )

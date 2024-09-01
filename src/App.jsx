@@ -1,13 +1,16 @@
 import React from 'react';
-import DegreePlan from './components/DegreePlan';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Header from './components/Header';
+import routes from "./clientRoutes.jsx";
 import styles from './styles/App.module.css';
+
+const router = createBrowserRouter(routes);
 
 function App() {
   return (
     <div className={styles.App}>
       <Header />
-      <DegreePlan />
+      <RouterProvider router={router} />
     </div>
   );
 }
