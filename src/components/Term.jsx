@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CourseList from './CourseList';
+import { CourseList } from './CourseList';
 import styles from '../styles/Term.module.css';
 
 function Term({ term }) {

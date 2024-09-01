@@ -43,11 +43,3 @@
     font-size: 18px;
     color: gray;
 }
-
-.totals {
-    padding-left: 20px;
-    height: 30px;
-    font-size: 14px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}

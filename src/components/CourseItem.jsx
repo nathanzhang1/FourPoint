@@ -53,12 +53,3 @@ export function CourseItem({ course, onUpdateCourse, onDeleteCourse }) {
         </>
     );
 }
-
-export function Totals() {
-    return (
-        <div className={styles.totals}>
-            <div>Total units:</div>
-            <div>Term GPA:</div>
-        </div>
-    )
-}
