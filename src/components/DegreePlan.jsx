@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Term from './Term';
 import styles from '../styles/DegreePlan.module.css';
@@ -8,7 +8,7 @@ function DegreePlan() {
 
     return (
         <div className={styles.rootContainer}>
-            <h2 className={styles.planHeader}>Degree Plan A</h2>
+            <h2 className={styles.planHeader}>Degree Plan</h2>
             <Link to="/">Back to dashboard</Link>
             <div className={styles.planContainer}>
                 {terms.map(terms => (
