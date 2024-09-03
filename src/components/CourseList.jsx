@@ -21,7 +21,7 @@ export function CourseList({ courses, onAddCourse, onUpdateCourse, onDeleteCours
 
     let courseList = courses.map(course => (
         <CourseItem 
-            key={course.id} 
+            key={course.key} 
             course={course} 
             onAddCourse={onAddCourse}
             onUpdateCourse={onUpdateCourse}

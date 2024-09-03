@@ -113,7 +113,7 @@ export function UpdateCourseModal({ isOpen, onClose, onUpdateCourse, onDeleteCou
       };
 
     const handleDeleteCourse = () => {
-        onDeleteCourse(course.id);
+        onDeleteCourse(course.key);
         setFormState(initialCourseModalData);
         onClose();
     }
