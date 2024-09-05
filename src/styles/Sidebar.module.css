@@ -1,0 +1,47 @@
+.sidebar {
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
+    grid-area: "sidebar";
+    background-color: #0284c7;
+    display: grid;
+    grid-template-rows: 100px 30px repeat(10, 50px);
+    align-items: center;
+}
+
+.sidebar > .dashboard {
+    font-size: 100%;
+    color: white;
+    font-weight: 500;
+    position: relative;
+}
+
+.sidebar > .tab {
+    font-size: 22px;
+    color: white;
+    font-weight: 500;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sidebar > .tab:hover {
+    background-color: #0369a1;
+    font-size: 23px;
+}
+
+.sidebar > div > svg {
+    height: 6%;
+    width: 6%;
+    position: relative;
+    top: 2px;
+    padding-left: 30px;
+    padding-right: 22px;
+}
+
+.sidebar > .dashboard > svg {
+    height: 15%;
+    width: 15%;
+    position: relative;
+    top: 15px;
+    padding-left: 16px;
+    padding-right: 14px;
+}

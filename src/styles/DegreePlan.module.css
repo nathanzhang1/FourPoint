@@ -1,4 +1,7 @@
 .rootContainer {
+    grid-column: 2 / -1;
+    grid-row: 2 / -1;
+    grid-area: "dashboard";
     display: grid;
     grid-template-rows: 70px 30px 100px;
     justify-content: center;

@@ -1,0 +1,7 @@
+.dashboard {
+    grid-column: 2 / -1;
+    grid-row: 2 / -1;
+    grid-area: "dashboard";
+    display: grid;
+    grid-template-columns: 1250fr 350fr;
+}
