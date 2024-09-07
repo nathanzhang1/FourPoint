@@ -3,9 +3,9 @@
     grid-row: 1/ 2;
     grid-area: "header";
     background-color: white;
+    /* box-shadow: 3px 3px 3px #bec8d3; */
     display: grid;
-    grid-template-rows: 4fr 6fr;
-    box-shadow: 3px 3px 3px #bec8d3;
+    /* grid-template-rows: 4fr 6fr; */
 }
 
 .search {
@@ -13,10 +13,12 @@
     grid-template-columns: 72fr 5fr 5fr 18fr;
     grid-template-rows: auto;
     align-items: center;
+    justify-items: center;
 }
 
 .searchBar {
     padding-left: 50px;
+    justify-self: left;
 }
 
 .searchBar > svg {
@@ -32,10 +34,9 @@
 }
 
 .searchBar > input {
-    background-color: #dbe9f2;
-    border-width: 0px;
+    border: 1px solid black;
     border-radius: 20px;
-    width: 800px;
+    width: 400px;
     height: 25px;
     padding-left: 10px;
     position: relative;
@@ -76,48 +77,4 @@
 
 .name:hover {
     font-size: 19px;
-}
-
-.hiThere {
-    display: grid;
-    grid-template-columns: 10fr 55fr 10fr 10fr 15fr;
-    align-items: center;
-}
-
-.profileHi > svg {
-    scale: 4.5;
-    color: black;
-    border-width: 5px;
-    border-color: black;
-    position: relative;
-    left: 80px;
-}
-
-.intro > .hi {
-    font-size: 14px;
-    font-weight: 500;
-    padding-bottom: 7px;
-}
-
-.intro > .name {
-    font-size: 20px;
-    font-weight: 500;
-}
-
-.new > button, .upload > button, .share > button {
-    background-color: #0284c7;
-    border: none;
-    border-radius: 30px;
-    height: 40px;
-    width: 120px;
-    color: white;
-    font-size: 16px;
-    font-weight: 500;
-    position: relative;
-    top: 5px;
-}
-
-.new > button:hover, .upload > button:hover, .share > button:hover {
-    height: 42px;
-    width: 126px;
 }

@@ -3,5 +3,11 @@
   display: grid;
   width: 100vw;
   height: 200vh;
-  grid-template: repeat(10, 1fr) / repeat(6, 1fr);
+  grid-template: 5fr 95fr / 1fr 5fr;
+  justify-self: center;
+  gap: 3px;
+}
+
+.AppContainer {
+  display: grid;
 }
