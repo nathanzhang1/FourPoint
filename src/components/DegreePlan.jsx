@@ -9,7 +9,13 @@ function DegreePlan() {
 
     return (
         <div className={styles.rootContainer}>
-            <h2 className={styles.planHeader}>Degree Plan {degreePlan}</h2>
+            <div className={styles.planHeaderContainer}>
+                <h2 className={styles.planHeader}>Degree Plan {degreePlan}</h2>
+                <div className={styles.morePlans}>
+                    <button>More plans</button>
+                    <button>Create</button>
+                </div>
+            </div>
             <Link to="/">Back to dashboard</Link>
             <div className={styles.planContainer}>
                 {terms.map(terms => (
