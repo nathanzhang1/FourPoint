@@ -1,0 +1,39 @@
+.announcementsContainer {
+    display: grid;
+    grid-template-rows: 60px 325px;
+}
+
+.announcementsHeader > p {
+    font-size: 18px;
+    font-weight: 500;
+    position: relative;
+    top: 10px;
+}
+
+.announcements {
+    margin-right: 50px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    overflow-y: scroll;
+    box-shadow: 3px 3px 3px #bec8d3;
+}
+
+.announcements > div {
+    border-bottom: 1px solid lightgrey;
+    padding-left: 5px;
+}
+
+.announcements > div > .h {
+    font-size: 15px;
+    font-weight: 500;
+    padding-bottom: 4px;
+    padding-top: 10px;
+}
+
+.announcements > div > .b {
+    font-size: 13px;
+    font-weight: 300;
+}

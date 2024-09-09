@@ -1,0 +1,58 @@
+.projectsContainer {
+    display: grid;
+    grid-template-rows: 60px 1000px;
+}
+
+.projectsHeader > p {
+    font-size: 18px;
+    font-weight: 500;
+    position: relative;
+    left: 20px;
+    top: 10px;
+}
+
+.announcementsHeader > p, .trendingHeader > p {
+    font-size: 18px;
+    font-weight: 500;
+    position: relative;
+    top: 10px;
+}
+
+.projects {
+    padding-left: 20px;
+    padding-right: 20px;
+    display: grid;
+    gap: 40px 40px;
+    grid-template: repeat(auto-fill, 250px) / repeat(auto-fill, minmax(350px, 1fr));
+    overflow: hidden;
+}
+
+.projects > div {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px #bec8d3;
+    border-left: 10px solid #f59e0b;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+}
+
+.projects > div:hover {
+    scale: 1.005;
+}
+
+.projectText {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+}
+
+.projectHeader {
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 4px;
+}
+
+.projectDescription {
+    font-size: 16px;
+    font-weight: 300;
+}
