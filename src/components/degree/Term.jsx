@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CourseList } from './CourseList';
-import styles from '../styles/Term.module.css';
+import styles from '../../styles/degree/Term.module.css';
 import axios from 'axios';
 
 function Term({ term, degreePlan }) {

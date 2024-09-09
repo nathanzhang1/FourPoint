@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import styles from "../styles/CourseModal.module.css";
-import Modal from "./Modal";
+import styles from "../../styles/degree/CourseModal.module.css";
+import Modal from "../Modal";
 
 const initialCourseModalData = {
     courseName: '',

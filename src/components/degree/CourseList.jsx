@@ -1,6 +1,6 @@
 import React from 'react';
 import { CourseItem, EmptySlot } from './CourseItem';
-import styles from "../styles/CourseList.module.css";
+import styles from "../../styles/degree/CourseList.module.css";
 
 export function Totals({ totalUnits, gpa }) {
 

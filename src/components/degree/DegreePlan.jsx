@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import Term from './Term';
-import styles from '../styles/DegreePlan.module.css';
+import styles from '../../styles/degree/DegreePlan.module.css';
 
 function DegreePlan() {
     const degreePlan = "A";

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { UpdateCourseModal, CourseModal } from "./CourseModal";
-import styles from "../styles/CourseItem.module.css";
+import styles from "../../styles/degree/CourseItem.module.css";
 
 export function EmptySlot({onAddCourse}) {
     const [isCourseModalOpen, setCourseModalOpen] = useState(false);

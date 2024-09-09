@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Header from './components/Header.jsx';
-import Sidebar from './components/Sidebar.jsx';
+import Header from './components/dashboard/Header.jsx';
+import Sidebar from './components/dashboard/Sidebar.jsx';
 import routes from "./routes/clientRoutes.jsx";
 import styles from './styles/App.module.css';
 

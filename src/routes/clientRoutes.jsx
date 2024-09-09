@@ -1,5 +1,5 @@
-import Dashboard from '../components/Dashboard';
-import DegreePlan from '../components/DegreePlan';
+import Dashboard from '../components/dashboard/Dashboard.jsx';
+import DegreePlan from '../components/degree/DegreePlan.jsx';
 
 const routes = [
     {
