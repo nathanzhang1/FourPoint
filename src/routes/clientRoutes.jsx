@@ -7,7 +7,7 @@ const routes = [
         element: <Dashboard />,
     },
     {
-        path: "plan",
+        path: "plan/:id",
         element: <DegreePlan />,
     },
 ]

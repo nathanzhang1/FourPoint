@@ -10,6 +10,7 @@
     box-shadow: 3px 3px 3px #bec8d3;
     padding: 30px;
     display: grid;
+    grid-auto-rows: 20%;
     overflow-y: scroll;
 }
 
