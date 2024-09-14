@@ -9,13 +9,43 @@ const initialPlanModalData = {
     endTerm: 'Spring',
     endYear: '2027',
     system: 'Quarter',
-    summer: '',
-    default: '',
+    summer: 'No',
+    default: 'No',
   };
+
+function validateForm(formState) {
+    if (formState.startYear > formState.endYear) {
+        return "Please select a valid time range.";
+    }
+
+    if (formState.startYear === formState.endYear) {
+        const termOrder = ["Winter", "Spring", "Summer", "Fall"];
+        if (termOrder.indexOf(formState.startTerm) > termOrder.indexOf(formState.endTerm)) {
+            return "Please select a valid time range.";
+        }
+    }
+
+    if (formState.summer === "No" && (formState.startTerm === "Summer" || formState.endTerm === "Summer")) {
+        return "Summer terms are off. Please reselect.";
+    }
+
+    if (formState.system === "Semester" && (formState.startTerm === "Winter" || formState.endTerm === "Winter")) {
+        return "Semester systems do not have winter terms. Please reselect.";
+    }
+
+    return null;
+}
 
 export default function PlanModal({ isOpen, onClose, onAddPlan}) {
     const focusInputRef = useRef(null);
     const [formState, setFormState] = useState(initialPlanModalData);
+    const [error, setError] = useState(null);
+
+    const termsList = ["Fall", "Winter", "Spring", "Summer"];
+    const yearsList = [];
+    for (let i = 2019; i <= 2034; i++) {
+        yearsList.push(String(i));
+    }
 
     useEffect(() => {
         if (isOpen && focusInputRef.current) {
@@ -35,12 +65,15 @@ export default function PlanModal({ isOpen, onClose, onAddPlan}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onAddPlan(formState);
-        setFormState((prevFormData) => ({
-            ...prevFormData,
-            name: '',
-          }));
-        onClose();
+        if (!validateForm(formState)) {
+            onAddPlan(formState);
+            setFormState((prevFormData) => ({
+                ...prevFormData,
+                name: '',
+            }));
+            onClose();
+        }
+        setError(validateForm(formState));
     };
 
       return (
@@ -65,12 +98,12 @@ export default function PlanModal({ isOpen, onClose, onAddPlan}) {
                     <select 
                         name="startTerm" 
                         id="startTerm" 
-                        onChange={handleInputChange} 
+                        onChange={handleInputChange}
+                        value={formState.startTerm} 
                         required>
-                            <option value="Fall" selected>Fall</option>
-                            <option value="Winter">Winter</option>
-                            <option value="Spring">Spring</option>
-                            <option value="Summer">Summer</option>
+                            {termsList.map((term) => (
+                                <option key={term} value={term}>{term}</option>
+                            ))}
                     </select>
                 </div>
                 <div className={styles.selectBlock}>
@@ -78,15 +111,12 @@ export default function PlanModal({ isOpen, onClose, onAddPlan}) {
                     <select 
                         name="startYear" 
                         id="startYear" 
-                        onChange={handleInputChange} 
+                        onChange={handleInputChange}
+                        value={formState.startYear}  
                         required>
-                            <option value="2022">2022</option>
-                            <option value="2023" selected>2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                            <option value="2028">2028</option>
+                            {yearsList.map((year) => (
+                                <option key={year} value={year}>{year}</option>
+                            ))}
                     </select>
                 </div>
                 <div className={styles.selectBlock}>
@@ -95,11 +125,11 @@ export default function PlanModal({ isOpen, onClose, onAddPlan}) {
                         name="endTerm" 
                         id="endTerm" 
                         onChange={handleInputChange} 
+                        value={formState.endTerm} 
                         required>
-                            <option value="Fall">Fall</option>
-                            <option value="Winter">Winter</option>
-                            <option value="Spring" selected>Spring</option>
-                            <option value="Summer">Summer</option>
+                            {termsList.map((term) => (
+                                <option key={term} value={term}>{term}</option>
+                            ))}
                     </select>
                 </div>
                 <div className={styles.selectBlock}>
@@ -108,14 +138,11 @@ export default function PlanModal({ isOpen, onClose, onAddPlan}) {
                         name="endYear" 
                         id="endYear" 
                         onChange={handleInputChange} 
+                        value={formState.endYear} 
                         required>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027" selected>2027</option>
-                            <option value="2028">2028</option>
+                            {yearsList.map((year) => (
+                                <option key={year} value={year}>{year}</option>
+                            ))}
                     </select>
                 </div>
             </div>
@@ -126,9 +153,10 @@ export default function PlanModal({ isOpen, onClose, onAddPlan}) {
                         name="system" 
                         id="system" 
                         onChange={handleInputChange} 
+                        value={formState.system} 
                         required>
                             <option value="Quarter">Quarter</option>
-                            <option value="Semester">Winter</option>
+                            <option value="Semester">Semester</option>
                     </select>
                 </div>
                 <div className={styles.selectBlock}>
@@ -137,9 +165,10 @@ export default function PlanModal({ isOpen, onClose, onAddPlan}) {
                         name="summer" 
                         id="summer" 
                         onChange={handleInputChange} 
+                        value={formState.summer} 
                         required>
-                            <option value="yes">Yes</option>
-                            <option value="no" selected>No</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
                     </select>
                 </div>
                 <div className={styles.selectBlock}>
@@ -148,9 +177,10 @@ export default function PlanModal({ isOpen, onClose, onAddPlan}) {
                         name="default"
                         id="default" 
                         onChange={handleInputChange} 
+                        value={formState.default} 
                         required>
-                            <option value="yes">Yes</option>
-                            <option value="no" selected>No</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
                     </select>
                 </div>
             </div>
@@ -158,6 +188,7 @@ export default function PlanModal({ isOpen, onClose, onAddPlan}) {
                 <button type="button" onClick={onClose} className={styles.cancelButton}>Cancel</button>
                 <button type="submit">Save changes</button>
             </div>
+            {error && <div className={styles.error}>{error}</div>}
           </form>
         </Modal>
       )
