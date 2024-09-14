@@ -3,13 +3,35 @@ import { useParams, Link, useLocation } from "react-router-dom";
 import Term from './Term';
 import styles from '../../styles/degree/DegreePlan.module.css';
 
+function generateTerms(startTerm, startYear, endTerm, endYear) {
+    const termsOrder = ["Winter", "Spring", "Summer", "Fall"];
+    const terms = [];
+    let currentTermIndex = termsOrder.indexOf(startTerm);
+    let currentYear = Number(startYear);
+
+    while (currentYear < endYear || (currentYear === endYear && termsOrder[currentTermIndex] !== endTerm)) {
+        terms.push(`${termsOrder[currentTermIndex]} ${currentYear}`);
+        currentTermIndex = (currentTermIndex + 1) % 4;
+        if (currentTermIndex === 0) currentYear++;  // Increment year when cycling back to "Winter"
+    }
+
+    // Add the final term (inclusive end)
+    terms.push(`${endTerm} ${endYear}`);
+    
+    return terms;
+}
+
 function DegreePlan() {
     const { id } = useParams();  // Get the dynamic id from the URL
     const location = useLocation();  // Access the passed state from the navigation
     const degreePlanName = location.state?.name || "Degree Plan";  // Use the passed name, or a fallback
 
-    const terms = ["Fall 2023", "Winter 2024", "Spring 2024", "Fall 2024", "Winter 2025", "Spring 2025", "Fall 2025", "Winter 2026", "Spring 2026", "Fall 2026", "Winter 2027", "Spring 2027"];
+    // Extract term-related data from navigation state
+    const { startTerm, startYear, endTerm, endYear } = location.state;
 
+    // Generate the terms dynamically based on start and end term/year
+    const terms = generateTerms(startTerm, startYear, endTerm, endYear);
+    
     return (
         <div className={styles.rootContainer}>
             <div className={styles.planHeaderContainer}>

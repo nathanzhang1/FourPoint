@@ -24,8 +24,8 @@ function Plans({ plans, setPlans }) {
     }
 
     const navigate = useNavigate();
-    const handlePlanClick = (id, name) => {
-        navigate(`/plan/${id}`, { state: { name } });
+    const handlePlanClick = (id, plan) => {
+        navigate(`/plan/${id}`, { state: { ...plan } });
     };
 
     const handleAddPlan = (plan) => {
@@ -59,7 +59,7 @@ function Plans({ plans, setPlans }) {
                     <div 
                         className={styles.trendingContainer} 
                         key={plan.id} 
-                        onClick={() => handlePlanClick(plan.id, plan.name)}
+                        onClick={() => handlePlanClick(plan.id, plan)}
                     >
                         <div className={styles.trendingText}>{plan.name}</div>
                     </div>

@@ -23,10 +23,10 @@ function Dashboard() {
     ]);
 
     const [plans, setPlans] = useState([
-        { id: 1, name: "CS + Math of Comp" },
-        { id: "A", name: "CS" },
-        { id: 3, name: "CS + Stats and DS" },
-        { id: 4, name: "CS + DS Engineering" },
+        { id: 1, name: "CS + Math of Comp", startTerm: "Fall", startYear: "2022", endTerm: "Spring", endYear: "2026" },
+        { id: "A", name: "CS", startTerm: "Fall", startYear: "2023", endTerm: "Spring", endYear: "2027" },
+        { id: 3, name: "CS + Stats and DS", startTerm: "Winter", startYear: "2023", endTerm: "Fall", endYear: "2027" },
+        { id: 4, name: "CS + DS Engineering", startTerm: "Spring", startYear: "2022", endTerm: "Winter", endYear: "2028" },
     ]);
 
     return (
