@@ -1,0 +1,61 @@
+.formRowText input {
+    display: block;
+    width: 100%;
+    height: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.formRowSelect1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-bottom: 1rem;
+    gap: 10px;
+}
+
+.formRowSelect2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 1rem;
+    gap: 10px;
+}
+
+.selectBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+.selectBlock select {
+    height: 1.8rem;
+    width: 100%;
+}
+
+.selectBlock label {
+    font-size: 14px;
+}
+
+.formButtons {
+    display: flex;
+    justify-content: right;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.formButtons button[type="submit"] {
+    background-color: #316fd3;
+    color: white;
+    border: none;
+    height: 2.2rem;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.cancelButton {
+    background-color: rgb(95, 94, 94);
+    color: white;
+    border: none;
+    height: 2.2rem;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 10px;
+}

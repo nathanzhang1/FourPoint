@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PlanModal from "./PlanModal.jsx";
 import styles from "../../styles/dashboard/Plans.module.css";
 
 function generateRandomId() {
@@ -12,28 +13,46 @@ function generateRandomId() {
 }
 
 function Plans({ plans, setPlans }) {
-    const navigate = useNavigate();
+    const [isPlanModalOpen, setPlanModalOpen] = useState(false);
 
+    const handleOpenPlanModal = () => {
+        setPlanModalOpen(true);
+    }
+
+    const handleClosePlanModal = () => {
+        setPlanModalOpen(false);
+    }
+
+    const navigate = useNavigate();
     const handlePlanClick = (id, name) => {
         navigate(`/plan/${id}`, { state: { name } });
     };
 
-    const handleAddPlan = () => {
-        const name = prompt("Enter the name of the new degree plan");
-        if (name) {
-            const newPlan = {
-                id: generateRandomId(),
-                name: name,
-            };
-            setPlans([...plans, newPlan]);
-        }
+    const handleAddPlan = (plan) => {
+        const newPlan = {
+            id: generateRandomId(),
+            name: plan.name,
+            startTerm: plan.startTerm,
+            startYear: plan.startYear,
+            endTerm: plan.endTerm,
+            endYear: plan.endYear,
+            system: plan.system,
+            summer: plan.summer,
+            default: plan.default,
+        };
+        setPlans([...plans, newPlan]);
     };
 
     return (
         <div className={styles.announcementsContainer}>
             <div className={styles.trendingHeader}>
                 <p>Degree Plans</p>
-                <button className={styles.add} onClick={handleAddPlan}>+</button>
+                <button className={styles.add} onClick={handleOpenPlanModal}>+</button>
+                <PlanModal 
+                    isOpen={isPlanModalOpen} 
+                    onClose={handleClosePlanModal} 
+                    onAddPlan={handleAddPlan}>
+                </PlanModal>
             </div>
             <div className={styles.trending}>
                 {plans.map(plan => (

@@ -33,11 +33,14 @@
     border: none;
     color: #a1a1aa;
     position: relative;
-    top: 15%;
+    top: 40%;
+    height: 45%;
+    border-radius: 12px;
 }
 
 .add:hover {
     scale: 1.1;
+    background-color: #f1f5f9;
 }
 
 .trendingContainer {

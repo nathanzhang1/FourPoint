@@ -24,7 +24,7 @@ function Dashboard() {
 
     const [plans, setPlans] = useState([
         { id: 1, name: "CS + Math of Comp" },
-        { id: 2, name: "CS" },
+        { id: "A", name: "CS" },
         { id: 3, name: "CS + Stats and DS" },
         { id: 4, name: "CS + DS Engineering" },
     ]);
