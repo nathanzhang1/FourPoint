@@ -41,13 +41,17 @@
 }
 
 .formButtons button[type="submit"] {
-    background-color: #316fd3;
+    background-color: #4681f4;
     color: white;
     border: none;
     height: 2.2rem;
     font-size: 14px;
     border-radius: 5px;
     padding: 10px;
+}
+
+.formButtons button[type="submit"]:hover {
+    background-color: #316fd3;
 }
 
 .cancelButton {
@@ -58,6 +62,10 @@
     font-size: 14px;
     border-radius: 5px;
     padding: 10px;
+}
+
+.cancelButton:hover {
+    background-color: rgb(70, 70, 70);
 }
 
 .error {
