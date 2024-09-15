@@ -129,7 +129,7 @@ export function UpdateCourseModal({ isOpen, onClose, onUpdateCourse, onDeleteCou
 
       return (
         <Modal hasCloseBtn={true} isOpen={isOpen} onClose={onClose}>
-            <h3>Update a course</h3>
+            <h3>Update this course</h3>
           <form onSubmit={handleSubmit}>
             <div className={styles.formRow}>
                 <input

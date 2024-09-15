@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Courses from "./Courses";
 import Assessments from "./Assessments";
 import Plans from "./Plans";
+import { UserContentContext } from '../../context/UserContentContext';
 import styles from "../../styles/dashboard/Dashboard.module.css";
 
 function Dashboard() {
-    // Manage the state for courses, assessments, and plans
     const [courses, setCourses] = useState([
         { id: 1, name: "Course 1", tasks: "Upcoming tasks" },
         { id: 2, name: "Course 2", tasks: "Upcoming tasks" },
@@ -22,12 +22,7 @@ function Dashboard() {
         { id: 4, title: "Squirtle", description: "This is an announcement, testing text wrapping on multiple lines" },
     ]);
 
-    const [plans, setPlans] = useState([
-        { id: 1, name: "CS + Math of Comp", startTerm: "Fall", startYear: "2022", endTerm: "Spring", endYear: "2026", summer: "Yes", system: "Quarter" },
-        { id: "A", name: "CS", startTerm: "Fall", startYear: "2023", endTerm: "Spring", endYear: "2027", summer: "No", system: "Quarter" },
-        { id: 3, name: "CS + Stats and DS", startTerm: "Fall", startYear: "2023", endTerm: "Fall", endYear: "2027", summer: "Yes", system: "Semester" },
-        { id: 4, name: "CS + DS Engineering", startTerm: "Spring", startYear: "2022", endTerm: "Fall", endYear: "2028", summer: "No", system: "Semester" },
-    ]);
+    const { plans, setPlans } = useContext(UserContentContext);
 
     return (
         <div className={styles.dashboard}>

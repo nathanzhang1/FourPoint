@@ -77,3 +77,17 @@
     margin-top: 1rem;
     font-size: 16px;
   }
+
+.deleteButton {
+    background-color: #ED0800;
+    color: white;
+    border: none;
+    height: 2.2rem;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.deleteButton:hover {
+    background-color: #cd0701;
+}

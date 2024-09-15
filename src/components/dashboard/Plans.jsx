@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PlanModal from "./PlanModal.jsx";
+import { PlanModal } from "./PlanModal.jsx";
 import styles from "../../styles/dashboard/Plans.module.css";
 
 function generateRandomId() {
