@@ -13,8 +13,6 @@
     grid-auto-rows: 350px;
     grid-template-columns: 300px 300px 300px;
     grid-template-rows: 350px;
-    /* grid-template-columns: 300px 300px 300px;
-    grid-template-rows: 350px 350px 350px 350px; */
     gap: 40px;
 }
 
@@ -22,5 +20,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.planSettings {
+    scale: 1.4;
+    position: relative;
+    top: 5%;
 }
 

@@ -1,0 +1,8 @@
+.layoutContainer {
+    display: grid;
+    width: 100vw;
+    height: 200vh;
+    grid-template: 5fr 95fr / 1fr 5fr;
+    justify-self: center;
+    gap: 3px;
+  }
