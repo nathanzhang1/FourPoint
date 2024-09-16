@@ -18,6 +18,8 @@
     right: 0.25em;
     background-color: transparent;
     border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .modalCloseBtn:hover {

@@ -34,6 +34,8 @@
     border-left: 10px solid #f59e0b;
     display: grid;
     grid-template-rows: 2fr 1fr;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .projects > div:hover {

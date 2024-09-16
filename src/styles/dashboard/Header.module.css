@@ -3,9 +3,8 @@
     grid-row: 1/ 2;
     grid-area: "header";
     background-color: white;
-    /* box-shadow: 3px 3px 3px #bec8d3; */
     display: grid;
-    /* grid-template-rows: 4fr 6fr; */
+    box-shadow: 3px 3px 3px #bec8d3;
 }
 
 .search {
@@ -27,6 +26,8 @@
     position: relative;
     top: 5px;
     right: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .searchBar > svg:hover {
@@ -51,6 +52,8 @@
     scale: 1.4;
     position: relative;
     top: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .bell >svg:hover {
@@ -64,6 +67,8 @@
     border-color: black;
     position: relative;
     top: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .profileSearch > svg:hover {

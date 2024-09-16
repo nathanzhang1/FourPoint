@@ -6,6 +6,8 @@
     grid-template-columns: 2fr 1fr 1fr;
     background-color: white;
     border: 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .courseItem > div {
@@ -24,6 +26,8 @@
     height: 40px;
     background-color: white;
     border: 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .courseItem:hover {

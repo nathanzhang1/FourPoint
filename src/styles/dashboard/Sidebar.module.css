@@ -3,7 +3,7 @@
     grid-row: 1 / -1;
     grid-area: "sidebar";
     background-color: white;
-    /* box-shadow: 3px 3px 3px #bec8d3; */
+    box-shadow: 3px 3px 3px #bec8d3;
     display: grid;
     grid-template-rows: 100px 30px repeat(10, 50px);
     align-items: center;
@@ -26,10 +26,12 @@
     margin-right: 30px;
     border-radius: 12px;
     display: flex;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .sidebar > .tab:hover {
-    background-color: #6590e1;
+    background-color: #316fd3;
     color: white;
 }
 
