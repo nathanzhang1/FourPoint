@@ -14,6 +14,10 @@ const initialPlanModalData = {
   };
 
 function validateForm(formState) {
+    if (!formState.name) {
+        return "Please input a degree plan name.";
+    }
+
     if (formState.startYear > formState.endYear) {
         return "Please select a valid time range.";
     }
@@ -71,13 +75,19 @@ export function PlanModal({ isOpen, onClose, onAddPlan}) {
                 ...prevFormData,
                 name: '',
             }));
-            onClose();
+            handleClose();
         }
         setError(validateForm(formState));
     };
 
+    const handleClose = () => {
+        setFormState(initialPlanModalData);
+        setError(null);
+        onClose();
+    }
+
       return (
-        <Modal hasCloseBtn={true} isOpen={isOpen} onClose={onClose}>
+        <Modal hasCloseBtn={true} isOpen={isOpen} onClose={handleClose}>
             <h3>Add a degree plan</h3>
           <form onSubmit={handleSubmit}>
             <div className={styles.formRowText}>
@@ -89,7 +99,6 @@ export function PlanModal({ isOpen, onClose, onAddPlan}) {
                     placeholder="Degree plan name"
                     value={formState.name}
                     onChange={handleInputChange}
-                    required
                 />
             </div>
             <div className={styles.formRowSelect1}>
@@ -185,7 +194,7 @@ export function PlanModal({ isOpen, onClose, onAddPlan}) {
                 </div>
             </div>
             <div className={styles.formButtons}>
-                <button type="button" onClick={onClose} className={styles.cancelButton}>Cancel</button>
+                <button type="button" onClick={handleClose} className={styles.cancelButton}>Cancel</button>
                 <button type="submit">Save changes</button>
             </div>
             {error && <div className={styles.error}>{error}</div>}
@@ -223,6 +232,7 @@ export function UpdatePlanModal({ plan, onUpdatePlan, onDeletePlan, onClose, isO
         if (!validateForm(formState)) {
             onUpdatePlan(formState);
             setFormState(formState);
+            setError(null);
             onClose();
         }
         setError(validateForm(formState));
@@ -231,11 +241,18 @@ export function UpdatePlanModal({ plan, onUpdatePlan, onDeletePlan, onClose, isO
     const handleDeletePlan = () => {
         onDeletePlan();
         setFormState(initialPlanModalData);
+        setError(null);
+        onClose();
+    }
+
+    const handleClose = () => {
+        setFormState(plan);
+        setError(null);
         onClose();
     }
 
     return (
-        <Modal hasCloseBtn={true} isOpen={isOpen} onClose={onClose}>
+        <Modal hasCloseBtn={true} isOpen={isOpen} onClose={handleClose}>
             <h3>Update this degree plan</h3>
           <form onSubmit={handleSubmit}>
             <div className={styles.formRowText}>
@@ -247,7 +264,6 @@ export function UpdatePlanModal({ plan, onUpdatePlan, onDeletePlan, onClose, isO
                     placeholder="Degree plan name"
                     value={formState.name}
                     onChange={handleInputChange}
-                    required
                 />
             </div>
             <div className={styles.formRowSelect1}>
@@ -344,7 +360,7 @@ export function UpdatePlanModal({ plan, onUpdatePlan, onDeletePlan, onClose, isO
             </div>
             <div className={styles.formButtons}>
                 <button type="button" onClick={handleDeletePlan} className={styles.deleteButton}>Delete plan</button>
-                <button type="button" onClick={onClose} className={styles.cancelButton}>Cancel</button>
+                <button type="button" onClick={handleClose} className={styles.cancelButton}>Cancel</button>
                 <button type="submit">Save changes</button>
             </div>
             {error && <div className={styles.error}>{error}</div>}

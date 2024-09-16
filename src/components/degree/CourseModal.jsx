@@ -9,9 +9,22 @@ const initialCourseModalData = {
     grade: '',
   };
 
+function validateForm(formState) {
+  if (!formState.name) {
+    return "Please input a course name.";
+  }
+
+  if ((!formState.units && formState.units !== 0) || formState.units < 0) {
+    return "Please input a valid unit value for this course.";
+  }
+
+  return null;
+}
+
 export function CourseModal({ isOpen, onClose, onAddCourse}) {
     const focusInputRef = useRef(null);
     const [formState, setFormState] = useState(initialCourseModalData);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (isOpen && focusInputRef.current) {
@@ -31,17 +44,26 @@ export function CourseModal({ isOpen, onClose, onAddCourse}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (formState.courseName && formState.units) {
+        if (!validateForm(formState)) {
             onAddCourse(formState.courseName, formState.professor, formState.grade, formState.units);
             setFormState((prevFormData) => ({
                 ...prevFormData,
                 courseName: '',
               }));
+            setError(null);
+            onClose();
         }
+        setError(validateForm(formState));
     };
 
+    const handleClose = () => {
+      setFormState(initialCourseModalData);
+      setError(null);
+      onClose();
+    }
+
       return (
-        <Modal hasCloseBtn={true} isOpen={isOpen} onClose={onClose}>
+        <Modal hasCloseBtn={true} isOpen={isOpen} onClose={handleClose}>
             <h3>Add a course</h3>
           <form onSubmit={handleSubmit}>
             <div className={styles.formRow}>
@@ -53,7 +75,6 @@ export function CourseModal({ isOpen, onClose, onAddCourse}) {
                     placeholder="Course name"
                     value={formState.courseName}
                     onChange={handleInputChange}
-                    required
                 />
                 <input
                     type="number"
@@ -62,7 +83,6 @@ export function CourseModal({ isOpen, onClose, onAddCourse}) {
                     placeholder="Units"
                     value={formState.units}
                     onChange={handleInputChange}
-                    required
                 />
             </div>
             <div className={styles.formRow}>
@@ -84,9 +104,10 @@ export function CourseModal({ isOpen, onClose, onAddCourse}) {
                 />
             </div>
             <div className={styles.formButtons}>
-                <button type="button" onClick={onClose} className={styles.cancelButton}>Cancel</button>
+                <button type="button" onClick={handleClose} className={styles.cancelButton}>Cancel</button>
                 <button type="submit">Save changes</button>
             </div>
+            {error && <div className={styles.error}>{error}</div>}
           </form>
         </Modal>
       )
@@ -95,6 +116,7 @@ export function CourseModal({ isOpen, onClose, onAddCourse}) {
 export function UpdateCourseModal({ isOpen, onClose, onUpdateCourse, onDeleteCourse, course}) {
     const focusInputRef = useRef(null);
     const [formState, setFormState] = useState(course);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (isOpen && focusInputRef.current) {
@@ -115,20 +137,29 @@ export function UpdateCourseModal({ isOpen, onClose, onUpdateCourse, onDeleteCou
     const handleDeleteCourse = () => {
         onDeleteCourse(course.key);
         setFormState(initialCourseModalData);
+        setError(null);
         onClose();
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (formState.name && formState.units) {
+        if (!validateForm(formState)) {
             onUpdateCourse(formState);
             setFormState(formState);
+            setError(null);
             onClose();
         }
+        setError(validateForm(formState));
     };
 
+    const handleClose = () => {
+      setFormState(course);
+      setError(null);
+      onClose();
+    }
+
       return (
-        <Modal hasCloseBtn={true} isOpen={isOpen} onClose={onClose}>
+        <Modal hasCloseBtn={true} isOpen={isOpen} onClose={handleClose}>
             <h3>Update this course</h3>
           <form onSubmit={handleSubmit}>
             <div className={styles.formRow}>
@@ -140,7 +171,6 @@ export function UpdateCourseModal({ isOpen, onClose, onUpdateCourse, onDeleteCou
                     placeholder="Course name"
                     value={formState.name}
                     onChange={handleInputChange}
-                    required
                 />
                 <input
                     type="number"
@@ -149,7 +179,6 @@ export function UpdateCourseModal({ isOpen, onClose, onUpdateCourse, onDeleteCou
                     placeholder="Units"
                     value={formState.units}
                     onChange={handleInputChange}
-                    required
                 />
             </div>
             <div className={styles.formRow}>
@@ -172,9 +201,10 @@ export function UpdateCourseModal({ isOpen, onClose, onUpdateCourse, onDeleteCou
             </div>
             <div className={styles.formButtons}>
                 <button type="button" onClick={handleDeleteCourse} className={styles.deleteButton}>Delete course</button>
-                <button type="button" onClick={onClose} className={styles.cancelButton}>Cancel</button>
+                <button type="button" onClick={handleClose} className={styles.cancelButton}>Cancel</button>
                 <button type="submit">Save changes</button>
             </div>
+            {error && <div className={styles.error}>{error}</div>}
           </form>
         </Modal>
       )
