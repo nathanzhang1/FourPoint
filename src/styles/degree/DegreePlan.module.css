@@ -5,6 +5,7 @@
     display: grid;
     grid-template-rows: 70px 30px 100px;
     justify-content: center;
+    position: relative;
 }
 
 .planContainer {
@@ -20,4 +21,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.planButtons {
+    display: flex;
 }

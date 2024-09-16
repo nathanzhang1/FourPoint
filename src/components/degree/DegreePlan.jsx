@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import Term from './Term';
 import UpdatePlan from './UpdatePlan';
+import OtherPlans from "./OtherPlans";
 import { UserContentContext } from '../../context/UserContentContext';
 import styles from '../../styles/degree/DegreePlan.module.css';
 
@@ -59,7 +60,10 @@ function DegreePlan() {
         <div className={styles.rootContainer}>
             <div className={styles.planHeaderContainer}>
                 <h2 className={styles.planHeader}>{plan.name || "Degree Plan"}</h2>
-                <UpdatePlan plan={plan} handleUpdatePlan={handleUpdatePlan} handleDeletePlan={handleDeletePlan}/>
+                <div className={styles.planButtons}>
+                    <OtherPlans plans={plans}/>
+                    <UpdatePlan plan={plan} handleUpdatePlan={handleUpdatePlan} handleDeletePlan={handleDeletePlan}/>
+                </div>
             </div>
             <div className={styles.planContainer}>
                 {terms.map(term => (
