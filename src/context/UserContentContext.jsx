@@ -1,27 +1,63 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState , useEffect} from 'react';
+import axios from 'axios';
 
 export const UserContentContext = createContext();
 
 export function UserContentProvider({ children }) {
-    const [plans, setPlans] = useState([
-        { id: "B", name: "CS + Math of Comp", startTerm: "Fall", startYear: "2022", endTerm: "Spring", endYear: "2026", summer: "Yes", system: "Quarter" },
-        { id: "A", name: "CS", startTerm: "Fall", startYear: "2023", endTerm: "Spring", endYear: "2027", summer: "No", system: "Quarter" },
-        { id: "C", name: "CS + Stats and DS", startTerm: "Fall", startYear: "2023", endTerm: "Fall", endYear: "2027", summer: "Yes", system: "Semester" },
-        { id: "D", name: "CS + DS Engineering", startTerm: "Spring", startYear: "2022", endTerm: "Fall", endYear: "2028", summer: "No", system: "Semester" },
-    ]);
+    const [userID, setUserID] = useState("nathanzhang");
+
+    const [plans, setPlans] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:3000/api/plans", {
+            params: { userID }
+        })
+            .then(response => {
+                setPlans(response.data);
+                console.log("Successful GET of degree plans for this user");
+            })
+            .catch(error => {
+                console.error('There was an error fetching the degree plans!', error);
+            });
+    }, []);
+
+    const addPlan = (newPlan) => {
+        axios.post("http://localhost:3000/api/plans", newPlan)
+            .then(() => {
+                setPlans([...plans, newPlan]);
+                console.log("Successful POST of plan");
+            })
+            .catch(error => {
+                console.error('There was an error adding the plan!', error);
+            });
+    }
 
     const updatePlan = (updatedPlan) => {
-        setPlans((prevPlans) =>
-            prevPlans.map((plan) => (plan.id === updatedPlan.id ? updatedPlan : plan))
-        );
+        axios.put(`http://localhost:3000/api/plans/${updatedPlan.id}`, updatedPlan)
+            .then(() => {
+                setPlans((prevPlans) =>
+                    prevPlans.map((plan) => (plan.id === updatedPlan.id ? updatedPlan : plan))
+                );
+                console.log("Successful PUT of plan");
+            })
+            .catch(error => {
+                console.error('There was an error updating the plan!', error);
+            });
     };
 
-    const deletePlan = (planId) => {
-        setPlans((prevPlans) => prevPlans.filter((plan) => plan.id !== planId));
+    const deletePlan = (planID) => {
+        axios.delete(`http://localhost:3000/api/plans/${planID}`)
+            .then(() => {
+                setPlans((prevPlans) => prevPlans.filter((plan) => plan.id !== planID));
+                console.log("Successful DELETE of plan");
+            })
+            .catch(error => {
+                console.error('There was an error deleting the plan!', error);
+            });
     };
 
     return (
-        <UserContentContext.Provider value={{ plans, setPlans, updatePlan, deletePlan }}>
+        <UserContentContext.Provider value={{ userID, plans, addPlan, updatePlan, deletePlan }}>
             {children}
         </UserContentContext.Provider>
     );

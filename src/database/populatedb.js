@@ -15,6 +15,21 @@ CREATE TABLE IF NOT EXISTS degreeplan (
   term VARCHAR ( 255 ),
   plan VARCHAR ( 255 )
 );
+
+CREATE TABLE IF NOT EXISTS planlist (
+  key INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  id VARCHAR ( 255 ),
+  name VARCHAR ( 255 ),
+  startterm VARCHAR ( 255 ),
+  startyear VARCHAR ( 255 ),
+  endterm VARCHAR ( 255 ),
+  endyear VARCHAR ( 255 ),
+  system VARCHAR ( 255 ),
+  summer VARCHAR ( 255 ),
+  defaultplan VARCHAR ( 255 ),
+  userid VARCHAR ( 255 ),
+  timecreated INTEGER
+);
 `;
 
 async function main() {

@@ -22,14 +22,14 @@ function Dashboard() {
         { id: 4, title: "Squirtle", description: "This is an announcement, testing text wrapping on multiple lines" },
     ]);
 
-    const { plans, setPlans } = useContext(UserContentContext);
+    const { userID, plans, addPlan } = useContext(UserContentContext);
 
     return (
         <div className={styles.dashboard}>
             <Courses courses={courses} />
             <div>
                 <Assessments assessments={assessments} />
-                <Plans plans={plans} setPlans={setPlans} />
+                <Plans plans={plans} addPlan={addPlan} userID={userID} />
             </div>
         </div>
     );

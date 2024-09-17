@@ -3,7 +3,7 @@ import styles from "../../styles/degree/CourseModal.module.css";
 import Modal from "../Modal";
 
 const initialCourseModalData = {
-    courseName: '',
+    name: '',
     professor: '',
     units: 4,
     grade: '',
@@ -45,10 +45,10 @@ export function CourseModal({ isOpen, onClose, onAddCourse}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!validateForm(formState)) {
-            onAddCourse(formState.courseName, formState.professor, formState.grade, formState.units);
+            onAddCourse(formState.name, formState.professor, formState.grade, formState.units);
             setFormState((prevFormData) => ({
                 ...prevFormData,
-                courseName: '',
+                name: '',
               }));
             setError(null);
             onClose();
@@ -70,10 +70,10 @@ export function CourseModal({ isOpen, onClose, onAddCourse}) {
                 <input
                     ref={focusInputRef}
                     type="text"
-                    id="courseName"
-                    name="courseName"
+                    id="name"
+                    name="name"
                     placeholder="Course name"
-                    value={formState.courseName}
+                    value={formState.name}
                     onChange={handleInputChange}
                 />
                 <input

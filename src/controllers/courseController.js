@@ -1,4 +1,4 @@
-import { queryGetAllCourses, queryAddCourse, queryUpdateCourse, queryDeleteCourse } from "../database/queries.js";
+import { queryGetAllCourses, queryAddCourse, queryUpdateCourse, queryDeleteCourse } from "../database/courseQueries.js";
 
 export async function getCourses(req, res) {
     const { term, plan } = req.query;

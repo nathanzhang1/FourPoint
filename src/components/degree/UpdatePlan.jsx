@@ -7,7 +7,7 @@ export default function UpdatePlan({ plan, handleUpdatePlan, handleDeletePlan })
 
     const handleDelete = () => {
         setUpdateModalOpen(false);
-        handleDeletePlan();
+        handleDeletePlan(plan.id);
     }
 
     return (

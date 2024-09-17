@@ -12,7 +12,7 @@ function generateRandomId() {
     return result;
 }
 
-function Plans({ plans, setPlans }) {
+function Plans({ plans, addPlan, userID }) {
     const [isPlanModalOpen, setPlanModalOpen] = useState(false);
 
     const handleOpenPlanModal = () => {
@@ -32,15 +32,17 @@ function Plans({ plans, setPlans }) {
         const newPlan = {
             id: generateRandomId(),
             name: plan.name,
-            startTerm: plan.startTerm,
-            startYear: plan.startYear,
-            endTerm: plan.endTerm,
-            endYear: plan.endYear,
+            startterm: plan.startterm,
+            startyear: plan.startyear,
+            endterm: plan.endterm,
+            endyear: plan.endyear,
             system: plan.system,
             summer: plan.summer,
-            default: plan.default,
+            defaultplan: plan.defaultplan,
+            userid: userID,
+            timecreated: Date.now() % 10000000,
         };
-        setPlans([...plans, newPlan]);
+        addPlan(newPlan);
     };
 
     return (

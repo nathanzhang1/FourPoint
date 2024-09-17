@@ -4,13 +4,13 @@ import Modal from "../Modal";
 
 const initialPlanModalData = {
     name: '',
-    startTerm: 'Fall',
-    startYear: '2023',
-    endTerm: 'Spring',
-    endYear: '2027',
+    startterm: 'Fall',
+    startyear: '2023',
+    endterm: 'Spring',
+    endyear: '2027',
     system: 'Quarter',
     summer: 'No',
-    default: 'No',
+    defaultplan: 'No',
   };
 
 function validateForm(formState) {
@@ -18,22 +18,22 @@ function validateForm(formState) {
         return "Please input a degree plan name.";
     }
 
-    if (formState.startYear > formState.endYear) {
+    if (formState.startyear > formState.endyear) {
         return "Please select a valid time range.";
     }
 
-    if (formState.startYear === formState.endYear) {
+    if (formState.startyear === formState.endyear) {
         const termOrder = ["Winter", "Spring", "Summer", "Fall"];
-        if (termOrder.indexOf(formState.startTerm) > termOrder.indexOf(formState.endTerm)) {
+        if (termOrder.indexOf(formState.startterm) > termOrder.indexOf(formState.endterm)) {
             return "Please select a valid time range.";
         }
     }
 
-    if (formState.summer === "No" && (formState.startTerm === "Summer" || formState.endTerm === "Summer")) {
+    if (formState.summer === "No" && (formState.startterm === "Summer" || formState.endterm === "Summer")) {
         return "Summer terms are off. Please reselect.";
     }
 
-    if (formState.system === "Semester" && (formState.startTerm === "Winter" || formState.endTerm === "Winter")) {
+    if (formState.system === "Semester" && (formState.startterm === "Winter" || formState.endterm === "Winter")) {
         return "Semester systems do not have winter terms. Please reselect.";
     }
 
@@ -103,12 +103,12 @@ export function PlanModal({ isOpen, onClose, onAddPlan}) {
             </div>
             <div className={styles.formRowSelect1}>
                 <div className={styles.selectBlock}>
-                    <label htmlFor="startTerm">Start term</label>
+                    <label htmlFor="startterm">Start term</label>
                     <select 
-                        name="startTerm" 
-                        id="startTerm" 
+                        name="startterm" 
+                        id="startterm" 
                         onChange={handleInputChange}
-                        value={formState.startTerm} 
+                        value={formState.startterm} 
                         required>
                             {termsList.map((term) => (
                                 <option key={term} value={term}>{term}</option>
@@ -116,12 +116,12 @@ export function PlanModal({ isOpen, onClose, onAddPlan}) {
                     </select>
                 </div>
                 <div className={styles.selectBlock}>
-                    <label htmlFor="startYear">Start year</label>
+                    <label htmlFor="startyear">Start year</label>
                     <select 
-                        name="startYear" 
-                        id="startYear" 
+                        name="startyear" 
+                        id="startyear" 
                         onChange={handleInputChange}
-                        value={formState.startYear}  
+                        value={formState.startyear}  
                         required>
                             {yearsList.map((year) => (
                                 <option key={year} value={year}>{year}</option>
@@ -129,12 +129,12 @@ export function PlanModal({ isOpen, onClose, onAddPlan}) {
                     </select>
                 </div>
                 <div className={styles.selectBlock}>
-                    <label htmlFor="endTerm">End term</label>
+                    <label htmlFor="endterm">End term</label>
                     <select 
-                        name="endTerm" 
-                        id="endTerm" 
+                        name="endterm" 
+                        id="endterm" 
                         onChange={handleInputChange} 
-                        value={formState.endTerm} 
+                        value={formState.endterm} 
                         required>
                             {termsList.map((term) => (
                                 <option key={term} value={term}>{term}</option>
@@ -142,12 +142,12 @@ export function PlanModal({ isOpen, onClose, onAddPlan}) {
                     </select>
                 </div>
                 <div className={styles.selectBlock}>
-                    <label htmlFor="endYear">End Year</label>
+                    <label htmlFor="endyear">End Year</label>
                     <select 
-                        name="endYear" 
-                        id="endYear" 
+                        name="endyear" 
+                        id="endyear" 
                         onChange={handleInputChange} 
-                        value={formState.endYear} 
+                        value={formState.endyear} 
                         required>
                             {yearsList.map((year) => (
                                 <option key={year} value={year}>{year}</option>
@@ -181,12 +181,12 @@ export function PlanModal({ isOpen, onClose, onAddPlan}) {
                     </select>
                 </div>
                 <div className={styles.selectBlock}>
-                    <label htmlFor="default">Default plan</label>
+                    <label htmlFor="defaultplan">Default plan</label>
                     <select 
-                        name="default"
-                        id="default" 
+                        name="defaultplan"
+                        id="defaultplan" 
                         onChange={handleInputChange} 
-                        value={formState.default} 
+                        value={formState.defaultplan} 
                         required>
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>
@@ -268,12 +268,12 @@ export function UpdatePlanModal({ plan, onUpdatePlan, onDeletePlan, onClose, isO
             </div>
             <div className={styles.formRowSelect1}>
                 <div className={styles.selectBlock}>
-                    <label htmlFor="startTerm">Start term</label>
+                    <label htmlFor="startterm">Start term</label>
                     <select 
-                        name="startTerm" 
-                        id="startTerm" 
+                        name="startterm" 
+                        id="startterm" 
                         onChange={handleInputChange}
-                        value={formState.startTerm} 
+                        value={formState.startterm} 
                         required>
                             {termsList.map((term) => (
                                 <option key={term} value={term}>{term}</option>
@@ -281,12 +281,12 @@ export function UpdatePlanModal({ plan, onUpdatePlan, onDeletePlan, onClose, isO
                     </select>
                 </div>
                 <div className={styles.selectBlock}>
-                    <label htmlFor="startYear">Start year</label>
+                    <label htmlFor="startyear">Start year</label>
                     <select 
-                        name="startYear" 
-                        id="startYear" 
+                        name="startyear" 
+                        id="startyear" 
                         onChange={handleInputChange}
-                        value={formState.startYear}  
+                        value={formState.startyear}  
                         required>
                             {yearsList.map((year) => (
                                 <option key={year} value={year}>{year}</option>
@@ -294,12 +294,12 @@ export function UpdatePlanModal({ plan, onUpdatePlan, onDeletePlan, onClose, isO
                     </select>
                 </div>
                 <div className={styles.selectBlock}>
-                    <label htmlFor="endTerm">End term</label>
+                    <label htmlFor="endterm">End term</label>
                     <select 
-                        name="endTerm" 
-                        id="endTerm" 
+                        name="endterm" 
+                        id="endterm" 
                         onChange={handleInputChange} 
-                        value={formState.endTerm} 
+                        value={formState.endterm} 
                         required>
                             {termsList.map((term) => (
                                 <option key={term} value={term}>{term}</option>
@@ -307,12 +307,12 @@ export function UpdatePlanModal({ plan, onUpdatePlan, onDeletePlan, onClose, isO
                     </select>
                 </div>
                 <div className={styles.selectBlock}>
-                    <label htmlFor="endYear">End Year</label>
+                    <label htmlFor="endyear">End Year</label>
                     <select 
-                        name="endYear" 
-                        id="endYear" 
+                        name="endyear" 
+                        id="endyear" 
                         onChange={handleInputChange} 
-                        value={formState.endYear} 
+                        value={formState.endyear} 
                         required>
                             {yearsList.map((year) => (
                                 <option key={year} value={year}>{year}</option>
@@ -346,12 +346,12 @@ export function UpdatePlanModal({ plan, onUpdatePlan, onDeletePlan, onClose, isO
                     </select>
                 </div>
                 <div className={styles.selectBlock}>
-                    <label htmlFor="default">Default plan</label>
+                    <label htmlFor="defaultplan">Default plan</label>
                     <select 
-                        name="default"
-                        id="default" 
+                        name="defaultplan"
+                        id="defaultplan" 
                         onChange={handleInputChange} 
-                        value={formState.default} 
+                        value={formState.defaultplan} 
                         required>
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>

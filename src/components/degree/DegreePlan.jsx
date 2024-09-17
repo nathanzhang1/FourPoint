@@ -42,12 +42,12 @@ function DegreePlan() {
 
     const plan = plans.find((plan) => plan.id === id);
     if (!plan) {
-        return <div>Plan not found!</div>;
+        return <div>Loading plan...</div>;
     }
 
-    const terms = generateTerms(plan.startTerm, plan.startYear, plan.endTerm, plan.endYear, plan.summer, plan.system);
+    const terms = generateTerms(plan.startterm, plan.startyear, plan.endterm, plan.endyear, plan.summer, plan.system);
 
-    const handleDeletePlan = () => {
+    const handleDeletePlan = (id) => {
         deletePlan(id);
         navigate('/');
     };
