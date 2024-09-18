@@ -1,4 +1,4 @@
-import { queryGetAllPlans, queryAddPlan, queryUpdatePlan, queryDeletePlan } from "../database/planQueries.js";
+import { queryGetAllPlans, queryAddPlan, queryUpdatePlan, queryUpdateDefaultPlan, queryDeletePlan } from "../database/planQueries.js";
 
 export async function getPlans(req, res) {
     const { userID } = req.query;
@@ -24,8 +24,11 @@ export async function addPlan(req, res) {
 
 export async function updatePlan(req, res) {
     const { id } = req.params;
-    const { name, startterm, startyear, endterm, endyear, system, summer, defaultplan } = req.body;
+    const { name, startterm, startyear, endterm, endyear, system, summer, defaultplan, userid } = req.body;
     try {
+        if (defaultplan === "Yes") {
+            await queryUpdateDefaultPlan(userid, id);
+        }
         await queryUpdatePlan(name, startterm, startyear, endterm, endyear, system, summer, defaultplan, id);
         res.status(200).send("Plan updated successfully");
     } catch (error) {

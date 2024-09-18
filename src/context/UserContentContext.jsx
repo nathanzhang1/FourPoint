@@ -33,7 +33,21 @@ export function UserContentProvider({ children }) {
     }
 
     const updatePlan = (updatedPlan) => {
-        axios.put(`http://localhost:3000/api/plans/${updatedPlan.id}`, updatedPlan)
+        if (updatedPlan.defaultplan === "Yes") {
+            axios.put(`http://localhost:3000/api/plans/${updatedPlan.id}`, updatedPlan)
+            .then(() => {
+                const updatedPlans = plans.map((p) => 
+                    p.id === updatedPlan.id ? { ...updatedPlan, defaultplan: "Yes" } : { ...p, defaultplan: "No" }
+                );
+                setPlans(updatedPlans);
+                console.log("Successful update of default plan");
+            })
+            .catch(error => {
+                console.error('There was an error updating the default plan!', error);
+            });
+        }
+        else {
+            axios.put(`http://localhost:3000/api/plans/${updatedPlan.id}`, updatedPlan)
             .then(() => {
                 setPlans((prevPlans) =>
                     prevPlans.map((plan) => (plan.id === updatedPlan.id ? updatedPlan : plan))
@@ -43,6 +57,7 @@ export function UserContentProvider({ children }) {
             .catch(error => {
                 console.error('There was an error updating the plan!', error);
             });
+        }
     };
 
     const deletePlan = (planID) => {

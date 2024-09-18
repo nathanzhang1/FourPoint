@@ -27,6 +27,15 @@ export async function queryUpdatePlan(name, startterm, startyear, endterm, endye
     );
 }
 
+export async function queryUpdateDefaultPlan(userid, id) {
+    await pool.query(
+        `UPDATE planlist
+        SET defaultplan=$1
+        WHERE userid=$2 AND id!=$3`,
+        ['No', userid, id]
+    );
+}
+
 export async function queryDeletePlan(id) {
     await pool.query(
         `DELETE FROM planlist
