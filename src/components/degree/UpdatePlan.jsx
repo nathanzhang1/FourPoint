@@ -2,13 +2,8 @@ import React, { useState } from "react";
 import { UpdatePlanModal } from '../dashboard/PlanModal';
 import styles from "../../styles/degree/UpdatePlan.module.css"
 
-export default function UpdatePlan({ plan, handleUpdatePlan, handleDeletePlan }) {
+export default function UpdatePlan({ plan, handleUpdatePlan }) {
     const [isUpdateModalOpen, setUpdateModalOpen] = useState(false);
-
-    const handleDelete = () => {
-        setUpdateModalOpen(false);
-        handleDeletePlan(plan.id);
-    }
 
     return (
         <div>
@@ -21,7 +16,6 @@ export default function UpdatePlan({ plan, handleUpdatePlan, handleDeletePlan })
                 <UpdatePlanModal
                     plan={plan}
                     onUpdatePlan={handleUpdatePlan}
-                    onDeletePlan={handleDelete}
                     onClose={() => setUpdateModalOpen(false)}
                     isOpen={isUpdateModalOpen}
                 />

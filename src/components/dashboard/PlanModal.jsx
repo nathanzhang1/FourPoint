@@ -89,6 +89,7 @@ export function PlanModal({ isOpen, onClose, onAddPlan}) {
       return (
         <Modal hasCloseBtn={true} isOpen={isOpen} onClose={handleClose}>
             <h3>Add a degree plan</h3>
+            <hr />
           <form onSubmit={handleSubmit}>
             <div className={styles.formRowText}>
                 <input
@@ -203,7 +204,7 @@ export function PlanModal({ isOpen, onClose, onAddPlan}) {
       )
 }
 
-export function UpdatePlanModal({ plan, onUpdatePlan, onDeletePlan, onClose, isOpen }) {
+export function UpdatePlanModal({ plan, onUpdatePlan, onClose, isOpen }) {
     const focusInputRef = useRef(null);
     const [formState, setFormState] = useState(plan);
     const [error, setError] = useState(null);
@@ -238,13 +239,6 @@ export function UpdatePlanModal({ plan, onUpdatePlan, onDeletePlan, onClose, isO
         setError(validateForm(formState));
     };
 
-    const handleDeletePlan = () => {
-        onDeletePlan();
-        setFormState(initialPlanModalData);
-        setError(null);
-        onClose();
-    }
-
     const handleClose = () => {
         setFormState(plan);
         setError(null);
@@ -254,6 +248,7 @@ export function UpdatePlanModal({ plan, onUpdatePlan, onDeletePlan, onClose, isO
     return (
         <Modal hasCloseBtn={true} isOpen={isOpen} onClose={handleClose}>
             <h3>Update this degree plan</h3>
+            <hr />
           <form onSubmit={handleSubmit}>
             <div className={styles.formRowText}>
                 <input
@@ -359,7 +354,6 @@ export function UpdatePlanModal({ plan, onUpdatePlan, onDeletePlan, onClose, isO
                 </div>
             </div>
             <div className={styles.formButtons}>
-                <button type="button" onClick={handleDeletePlan} className={styles.deleteButton}>Delete plan</button>
                 <button type="button" onClick={handleClose} className={styles.cancelButton}>Cancel</button>
                 <button type="submit">Save changes</button>
             </div>
@@ -367,4 +361,23 @@ export function UpdatePlanModal({ plan, onUpdatePlan, onDeletePlan, onClose, isO
           </form>
         </Modal>
       )
+}
+
+export function DeletePlanModal({ onDeletePlan, onClose, isOpen }) {
+    const handleDeletePlan = () => {
+        onDeletePlan();
+        onClose();
+    }
+
+    return (
+        <Modal hasCloseBtn={true} isOpen={isOpen} onClose={onClose}>
+            <h3>Delete this degree plan</h3>
+            <hr />
+            <p className={styles.deleteConfirm}>Are you sure you want to delete this degree plan?</p>
+            <div className={styles.formButtons}>
+                <button type="button" onClick={onClose} className={styles.cancelButton}>Cancel</button>
+                <button type="button" onClick={handleDeletePlan} className={styles.deleteButton}>Delete plan</button>
+            </div>
+        </Modal>
+    )
 }

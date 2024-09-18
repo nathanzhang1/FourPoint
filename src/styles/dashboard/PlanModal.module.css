@@ -1,6 +1,6 @@
 .formRowText input {
     display: block;
-    width: 100%;
+    width: 98%;
     height: 1.8rem;
     margin-bottom: 1rem;
 }
@@ -97,4 +97,12 @@
 
 .deleteButton:hover {
     background-color: #cd0701;
+}
+
+.deleteConfirm {
+    margin-bottom: 40px;
+}
+
+hr {
+    margin-bottom: 20px;
 }

@@ -1,0 +1,21 @@
+.deletePlan {
+    border-radius: 20px;
+    position: relative;
+    top: 5px;
+    width: 35px;
+    height: 35px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.deletePlan > svg {
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.deletePlan > svg:hover {
+    scale: 1.05;
+}
