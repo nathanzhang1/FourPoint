@@ -2,17 +2,17 @@ import React from 'react';
 import { CourseItem, EmptySlot } from './CourseItem';
 import styles from "../../styles/degree/CourseList.module.css";
 
-export function Totals({ totalUnits, gpa }) {
+export function Totals({ totalUnits, gpa, showGPA }) {
 
     return (
         <div className={styles.totals}>
             <div>Term units: {totalUnits}</div>
-            <div>Term GPA: {gpa}</div>
+            <div>Term GPA: {showGPA && gpa}</div>
         </div>
     )
 }
 
-export function CourseList({ courses, onAddCourse, onUpdateCourse, onDeleteCourse}) {
+export function CourseList({ courses, onAddCourse, onUpdateCourse, onDeleteCourse, showGPA}) {
     const emptySlots = [];
     for (let i = 0; i < (6 - courses.length); i++) {
         let key = Math.random();
@@ -25,7 +25,8 @@ export function CourseList({ courses, onAddCourse, onUpdateCourse, onDeleteCours
             course={course} 
             onAddCourse={onAddCourse}
             onUpdateCourse={onUpdateCourse}
-            onDeleteCourse={onDeleteCourse} />
+            onDeleteCourse={onDeleteCourse}
+            showGPA={showGPA} />
     ));
     courseList.reverse();
 
@@ -74,7 +75,7 @@ export function CourseList({ courses, onAddCourse, onUpdateCourse, onDeleteCours
         <div className={styles.courseList}>
             {emptySlots}
             {courseList}
-            <Totals totalUnits={totalUnits} gpa={gpa}/>
+            <Totals totalUnits={totalUnits} gpa={gpa} showGPA={showGPA}/>
         </div>
     );
 }

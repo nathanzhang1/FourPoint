@@ -2,7 +2,7 @@ import React from "react";
 import { CourseList } from './CourseList';
 import styles from '../../styles/degree/Term.module.css';
 
-function Term({ term, courses, onAddCourse, onUpdateCourse, onDeleteCourse, degreePlan }) {
+function Term({ term, courses, onAddCourse, onUpdateCourse, onDeleteCourse, degreePlan, showGPA }) {
     const handleAddCourse = (courseName, professor, grade, units) => {
         const newCourse = { 
             key: Date.now() % 10000000, // Use the same key logic
@@ -23,7 +23,9 @@ function Term({ term, courses, onAddCourse, onUpdateCourse, onDeleteCourse, degr
                 courses={courses} 
                 onAddCourse={handleAddCourse} 
                 onUpdateCourse={onUpdateCourse} 
-                onDeleteCourse={onDeleteCourse}/>
+                onDeleteCourse={onDeleteCourse}
+                showGPA={showGPA}
+            />
         </div>
     )
 }

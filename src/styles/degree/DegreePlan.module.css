@@ -32,3 +32,25 @@
 .planHeader {
     margin-right: 50px;
 }
+
+.showGPA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.showGPAlabel {
+    position: relative;
+    top: 4px;
+}
+
+.gpaSwitch {
+    position: relative;
+    top: 10px;
+    width: 70px;
+    height: 40px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}

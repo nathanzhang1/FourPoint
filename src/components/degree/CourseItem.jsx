@@ -25,7 +25,7 @@ export function EmptySlot({onAddCourse}) {
     )
 }
 
-export function CourseItem({ course, onUpdateCourse, onDeleteCourse }) {
+export function CourseItem({ course, onUpdateCourse, onDeleteCourse, showGPA }) {
     const [isCourseModalOpen, setCourseModalOpen] = useState(false);
 
     const handleOpenCourseModal = () => {
@@ -40,7 +40,7 @@ export function CourseItem({ course, onUpdateCourse, onDeleteCourse }) {
         <>
             <button className={styles.courseItem} onClick={handleOpenCourseModal}>
                 <div>{course.name.toUpperCase()}</div>
-                <div>{course.grade.toUpperCase()}</div>
+                <div>{showGPA && course.grade.toUpperCase()}</div>
                 <div>{course.units}</div>
             </button>
             <UpdateCourseModal

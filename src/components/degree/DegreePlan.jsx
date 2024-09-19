@@ -6,6 +6,7 @@ import OtherPlans from "./OtherPlans";
 import DeletePlan from "./DeletePlan";
 import { UserContentContext } from '../../context/UserContentContext';
 import axios from 'axios';
+import ReactSwitch from 'react-switch';
 import styles from '../../styles/degree/DegreePlan.module.css';
 
 function generateTerms(startTerm, startYear, endTerm, endYear, summer, system) {
@@ -44,6 +45,7 @@ function DegreePlan() {
     const [courses, setCourses] = useState([]);
     const [totalUnits, setTotalUnits] = useState(0);
     const [totalGPA, setTotalGPA] = useState("N/A");
+    const [showGPA, setShowGPA] = useState(true);
 
     const plan = plans.find((plan) => plan.id === id);
 
@@ -173,9 +175,22 @@ function DegreePlan() {
                 <div className={styles.planDisplays}>
                     <h2 className={styles.planHeader}>{plan.name || "Degree Plan"}</h2>
                     <div className={styles.planHeader}>Total units: {totalUnits}</div>
-                    <div className={styles.planHeader}>Total GPA: {totalGPA}</div>
+                    <div className={styles.planHeader}>Total GPA: {showGPA && totalGPA}</div>
+                    {/* {showGPA && <div className={styles.planHeader}>Total GPA: {totalGPA}</div>} */}
                 </div>
                 <div className={styles.planButtons}>
+                    <div className={styles.showGPA}>
+                        <div className={styles.showGPAlabel}>Show grades:</div>
+                        <ReactSwitch 
+                            className={styles.gpaSwitch}
+                            checked={showGPA}
+                            onChange={() => setShowGPA(!showGPA)}
+                            checkedIcon={null}
+                            uncheckedIcon={null}
+                            onColor='#316fd3'
+                            handleDiameter={20}
+                            />
+                    </div>
                     <OtherPlans plans={plans}/>
                     <UpdatePlan plan={plan} handleUpdatePlan={handleUpdatePlan}/>
                     <DeletePlan plan={plan} handleDeletePlan={handleDeletePlan}/>
@@ -191,6 +206,7 @@ function DegreePlan() {
                         onAddCourse={handleAddCourse}
                         onUpdateCourse={handleUpdateCourse}
                         onDeleteCourse={handleDeleteCourse}
+                        showGPA={showGPA}
                     />
                 ))}
             </div>
