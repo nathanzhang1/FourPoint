@@ -1,11 +1,11 @@
 import { pool } from "./pool.js";
 
-export async function queryGetAllCourses(term, plan) {
+export async function queryGetAllCourses(plan) {
     const { rows } = await pool.query(
         `SELECT * FROM degreeplan 
-        WHERE term=$1 AND plan=$2
+        WHERE plan=$1
         ORDER BY key`, // Order by time created to persist display order
-        [term, plan]
+        [plan]
     );
     return rows;
 }

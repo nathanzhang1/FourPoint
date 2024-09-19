@@ -1,9 +1,10 @@
 import { queryGetAllCourses, queryAddCourse, queryUpdateCourse, queryDeleteCourse } from "../database/courseQueries.js";
 
 export async function getCourses(req, res) {
-    const { term, plan } = req.query;
+    const { plan } = req.query;
+    const { id } = plan;
     try {
-        const courses = await queryGetAllCourses(term, plan);
+        const courses = await queryGetAllCourses(id);
         res.json(courses);
     } catch (error) {
         console.error(error.message);

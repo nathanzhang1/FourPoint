@@ -23,6 +23,12 @@
     align-items: center;
 }
 
-.planButtons {
+.planButtons, .planDisplays {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.planHeader {
+    margin-right: 50px;
 }
